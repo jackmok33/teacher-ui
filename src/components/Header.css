@@ -3,12 +3,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: rgb(197, 5, 197); /* Green background */
+    background-color: rgb(197, 5, 197);
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
-    margin:0;
-    padding:0;
+
+
     position: relative;
 }
 
@@ -26,4 +26,5 @@
 .title {
     font-size: 1.5rem;
     font-weight: bold;
+    color: white;
 }
