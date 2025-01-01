@@ -1,0 +1,17 @@
+/* Reset margins and paddings */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Optional: Apply a consistent box model across all elements */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Add custom styles to body if needed */
+body {
+  font-family: Arial, sans-serif; /* Optional: Set a global font */
+  background-color: #f4f4f4; /* Optional: Background color */
+}
