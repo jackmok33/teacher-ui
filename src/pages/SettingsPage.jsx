@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./SettingsPage.css";
 
 function SettingsPage() {
-    const [age, setAge] = useState("10-12");
+    const [age, setAge] = useState("7-9");
     const [difficulty, setDifficulty] = useState("Easy");
     const [time, setTime] = useState("30");
     const navigate = useNavigate();
