@@ -50,7 +50,7 @@ function UploadPage() {
         }
     };
 
-    const captureImage = () => {
+    const captureImage = async () => {
         if (capturedImages.length >= 10) {
             alert("You have already captured 10 images!");
             return;
@@ -58,10 +58,36 @@ function UploadPage() {
         if (videoRef.current && canvasRef.current) {
             const context = canvasRef.current.getContext("2d");
             context.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
-            const imageData = canvasRef.current.toDataURL("image/png");
-            setCapturedImages([...capturedImages, imageData]);
+            canvasRef.current.toBlob(async (blob) => {
+                if (!blob) return;
+    
+                // Create FormData and append the blob
+                const formData = new FormData();
+                formData.append("file", blob, `image-${Date.now()}.png`);
+    
+                try {
+                    // Send to FastAPI server
+                    const response = await fetch("http://127.0.0.1:8000/upload", {
+                        method: "POST",
+                        body: formData,
+                    });
+    
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log("Image uploaded:", data);
+                        setCapturedImages([...capturedImages, URL.createObjectURL(blob)]);
+                        alert("Image uploaded successfully!");
+                    } else {
+                        alert("Failed to upload image");
+                    }
+                } catch (error) {
+                    console.error("Error uploading image:", error);
+                    alert("An error occurred while uploading the image");
+                }
+            }, "image/png");
         }
     };
+    
 
     const stopCamera = () => {
         setIsCapturing(false);
