@@ -98,3 +98,63 @@ p {
     font-weight: bold;
     color: #333;
 }
+
+.camera-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.camera-capture-container {
+    position: relative;
+    display: inline-block;
+}
+
+.camera-preview {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.camera-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hidden-canvas {
+    display: none;
+}
+
+.captured-images {
+    margin-top: 20px;
+    text-align: center;
+    max-height: 200px; /* Limit the height of the container */
+    overflow-y: scroll; /* Add a scrollbar if content exceeds height */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.captured-images-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.captured-thumbnail {
+    width: 100px;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.camera-button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
