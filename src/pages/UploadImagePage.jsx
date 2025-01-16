@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./UploadImagePage.css";
+import "../styles/UploadImagePage.css";
 
 function UploadImagePage() {
     const [recognizedItem, setRecognizedItem] = useState("");

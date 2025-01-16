@@ -1,6 +1,6 @@
 import  { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
-import "./Homepage.css";
+import "../styles/Homepage.css";
 
 function Homepage() {
     const [name, setName] = useState("");

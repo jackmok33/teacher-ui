@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./UploadCsvPage.css";
+import "../styles/UploadCsvPage.css";
 
 function UploadCsvPage() {
     const [file, setFile] = useState(null);

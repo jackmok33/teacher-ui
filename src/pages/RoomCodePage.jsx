@@ -1,5 +1,5 @@
 import  { useState } from "react";
-import "./RoomCodePage.css";
+import "../styles/RoomCodePage.css";
 
 function RoomCodePage() {
     const [roomCode] = useState(generateRoomCode());

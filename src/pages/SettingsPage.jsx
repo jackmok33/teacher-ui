@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SettingsPage.css";
+import "../styles/SettingsPage.css";
 
 function SettingsPage() {
     const [age, setAge] = useState("7-9");
