@@ -1,19 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import  { useState } from "react";
 import "./RoomCodePage.css";
 
 function RoomCodePage() {
     const [roomCode] = useState(generateRoomCode());
-    const navigate = useNavigate();
 
-    // Function to generate a random 4-digit room code
+// Function to generate a random 4-digit room code
     function generateRoomCode() {
         return Math.floor(1000 + Math.random() * 9000).toString();
     }
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(roomCode);
-        alert("Room code copied to clipboard!");
+        navigator.clipboard.writeText(roomCode).then(() => alert("Room code copied to clipboard!"));
     };
 
     return (

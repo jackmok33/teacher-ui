@@ -1,0 +1,85 @@
+.upload-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: #f4f7fc;
+    color: #333;
+    text-align: center;
+}
+
+.camera-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.camera-capture-container {
+    position: relative;
+    display: inline-block;
+}
+
+.camera-preview {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.hidden-canvas {
+    display: none;
+}
+
+.camera-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.camera-button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.camera-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.captured-images {
+    margin-top: 20px;
+    text-align: center;
+    max-height: 200px; /* Limit the height of the container */
+    overflow-y: scroll; /* Add a scrollbar if content exceeds height */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.captured-images-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.captured-text {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fafafa;
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+    word-break: break-word; /* Prevent long text from overflowing */
+}
