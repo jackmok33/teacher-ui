@@ -17,24 +17,24 @@ body {
 /* Hero Section */
 .hero {
     background-color: #f0f0f0; /* Light gray background for the box */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 60px; /* Increased padding for more content space */
+    border-radius: 15px; /* Slightly rounder corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
     width: 90%;
-    max-width: 500px;
+    max-width: 700px; /* Increased max-width for larger screens */
     text-align: center;
 }
 
 /* Heading and Paragraph */
 .hero h1 {
-    font-size: 2rem;
+    font-size: 2.5rem; /* Larger font size for the header */
     color: #4caf50; /* Green for the header */
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .hero p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+    font-size: 1.2rem; /* Slightly larger font size for the paragraph */
+    margin-bottom: 30px;
     color: #555; /* Lighter color for paragraph */
 }
 
@@ -86,9 +86,12 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
-        padding: 20px;
+        padding: 30px; /* Smaller padding for mobile devices */
     }
-    .submit-button {
-        font-size: 0.9rem;
+    .hero h1 {
+        font-size: 2rem; /* Adjust heading size for smaller screens */
+    }
+    .hero p {
+        font-size: 1rem; /* Adjust paragraph size for smaller screens */
     }
 }

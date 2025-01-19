@@ -1,156 +1,144 @@
-/* GameSettingsPage.css */
+/* Container for the game settings page */
 .game-settings-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px; /* Maximum width of the page container */
+    margin: 0 auto; /* Center the page horizontally */
+    padding: 40px; /* Add padding around the content */
+    background-color: #f9f9f9; /* Light gray background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for a lifted effect */
 }
 
+/* Main heading styles */
 h1 {
-    font-size: 2rem;
-    text-align: center;
-    color: #333;
+    font-size: 2.5rem; /* Large font size for the title */
+    text-align: center; /* Center-align the title */
+    color: #333; /* Dark gray text color */
+    margin-bottom: 20px; /* Space below the title */
 }
 
+/* General paragraph styles */
 p {
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 30px;
+    font-size: 1.2rem; /* Slightly larger font size for better readability */
+    text-align: center; /* Center-align the text */
+    margin-bottom: 40px; /* Space below the paragraph */
+    color: #555; /* Lighter gray text color */
 }
 
+/* Form container styles */
 .settings-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex; /* Flexbox layout for vertical alignment */
+    flex-direction: column; /* Vertical alignment */
+    gap: 20px; /* Spacing between items */
+    max-width: 400px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the form horizontally */
 }
 
+
+/* Individual setting item styles */
 .setting-item {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* White background */
+    padding: 20px; /* Inner padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Labels for the form inputs */
 .setting-item label {
-    font-size: 1.1rem;
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
+    font-size: 1.2rem; /* Slightly larger font size for readability */
+    display: block; /* Make the label a block element */
+    margin-bottom: 10px; /* Space below the label */
+    color: #333; /* Dark gray text color */
 }
 
-.setting-dropdown {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    background-color: #fafafa;
-    cursor: pointer;
-}
-
-.setting-dropdown:focus {
-    outline: none;
-    border-color: #4CAF50;
-    background-color: #f1f1f1;
-}
-
-button.apply-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button.apply-button:hover {
-    background-color: #45a049;
-}
-
-.settings-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.setting-item {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
+/* Dropdown and input field styles */
 .setting-dropdown,
 .setting-input {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 100%; /* Full width of the container */
+    padding: 15px; /* Larger padding for a better click/tap area */
+    font-size: 1.1rem; /* Slightly larger font size */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fafafa; /* Light background for the input field */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
-.apply-button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Styles for dropdown and input field when focused */
+.setting-dropdown:focus,
+.setting-input:focus {
+    outline: none; /* Remove the default outline */
+    border-color: #4CAF50; /* Green border on focus */
+    background-color: #f1f1f1; /* Slightly darker background */
 }
 
-.apply-button:hover {
-    background-color: #45a049;
+/* Apply button styles */
+button.apply-button {
+    padding: 15px 25px; /* Larger padding for a more prominent button */
+    font-size: 1.2rem; /* Larger font size for the button text */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text color */
+    border: none; /* Remove the border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
 }
 
+/* Hover effect for the apply button */
+button.apply-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+/* Quiz question container styles */
 .quiz-questions {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    margin-top: 40px; /* Space above the quiz section */
+    padding: 30px; /* Inner padding for spacing */
+    background-color: #fafafa; /* Light background for the section */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Quiz question section heading */
 .quiz-questions h2 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #333;
+    font-size: 2rem; /* Larger font size for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    color: #333; /* Dark gray text color */
 }
 
+/* List styles for quiz questions */
 .quiz-questions ul {
-    list-style-type: disc;
-    padding-left: 20px;
+    list-style-type: disc; /* Use bullet points for the list */
+    padding-left: 40px; /* Add left padding for bullets */
 }
 
+/* Individual question styles */
 .quiz-questions li {
-    margin-bottom: 8px;
-    font-size: 1rem;
-    color: #555;
+    margin-bottom: 15px; /* Space between questions */
+    font-size: 1.2rem; /* Larger font size for questions */
+    color: #555; /* Light gray text color */
 }
 
+/* Container for the start game button */
 .start-game-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    display: flex; /* Flexbox layout for centering */
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 30px; /* Space above the container */
 }
 
+/* Start game button styles */
 .start-game-button {
-    padding: 12px 20px;
-    background-color: #2196F3;
-    color: white;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 15px 30px; /* Larger padding for prominence */
+    font-size: 1.2rem; /* Larger font size for the button text */
+    background-color: #2196F3; /* Blue background */
+    color: white; /* White text color */
+    border: none; /* Remove the border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
 }
 
+/* Hover effect for the start game button */
 .start-game-button:hover {
-    background-color: #1976D2;
+    background-color: #1976D2; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight enlargement on hover */
 }
-
