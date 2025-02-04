@@ -44,8 +44,26 @@ function SettingsPage() {
         }
     };
 
-    const handleStartGame = () => {
-        navigate("/room-code");
+    const handleStartGame = async () => {
+        try {
+            const response = await fetch("http://127.0.0.1:9000/confirm-by-json/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(quizQuestions),
+            });
+
+            if (response.ok) {
+                navigate("/room-code");
+            } else {
+                console.error(response);
+                alert("Failed to confirm quiz questions. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error confirming quiz questions:", error);
+            alert("An error occurred while confirming quiz questions.");
+        }
     };
 
     return (

@@ -6,7 +6,6 @@ function UploadCsvPage() {
     const [file, setFile] = useState(null);
     const [timeLimit, setTimeLimit] = useState("30"); // State for time limit selection
     const [isUploading, setIsUploading] = useState(false);
-    const [progress, setProgress] = useState(0);
     const navigate = useNavigate();
 
     const handleFileChange = (e) => {
@@ -16,28 +15,35 @@ function UploadCsvPage() {
         }
     };
 
-    const handleUpload = (e) => {
+    const handleUpload = async (e) => {
         e.preventDefault();
         if (!file) return alert("Please select a file!");
 
         setIsUploading(true);
 
-        // Simulate file upload progress
-        let interval = setInterval(() => {
-            setProgress((prev) => {
-                if (prev >= 100) {
-                    clearInterval(interval);
-                    setIsUploading(false);
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("timeLimit", timeLimit);
 
-                    // Save time limit to localStorage
-                    localStorage.setItem("timeLimit", timeLimit);
-
-                    navigate("/room-code");
-                    return 100;
-                }
-                return prev + 10;
+        try {
+            const response = await fetch("http://127.0.0.1:9000/confirm-by-csv/", {
+                method: "POST",
+                body: formData,
             });
-        }, 500);
+
+            if (response.ok) {
+                setIsUploading(false);
+                navigate("/room-code");
+            } else {
+                console.error(response);
+                alert("Failed to upload file. Please try again.");
+                setIsUploading(false);
+            }
+        } catch (error) {
+            console.error("Error uploading file:", error);
+            alert("An error occurred while uploading the file.");
+            setIsUploading(false);
+        }
     };
 
     return (
@@ -80,14 +86,6 @@ function UploadCsvPage() {
                     {isUploading ? "Uploading..." : "Upload File"}
                 </button>
             </form>
-
-            {/* Upload Progress */}
-            {isUploading && (
-                <div className="progress-container">
-                    <div className="progress-bar" style={{ width: `${progress}%` }}></div>
-                    <span>{progress}%</span>
-                </div>
-            )}
         </div>
     );
 }
