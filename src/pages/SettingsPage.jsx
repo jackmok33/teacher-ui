@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/SettingsPage.css";
+import {apiFetch} from "../api.js";
 
 function SettingsPage() {
     const [age, setAge] = useState("7-9");
@@ -24,14 +25,14 @@ function SettingsPage() {
         });
 
         try {
-            const response = await fetch(`http://127.0.0.1:9000/generate/?${params.toString()}`, {
+            const response = await apiFetch(`/ai/generate/?${params.toString()}`, {
                 method: "GET",
             });
 
             if (response.ok) {
                 const data = await response.json();
-                localStorage.setItem("questions", JSON.stringify(data.data));
-                setQuizQuestions(data.data || []);
+                localStorage.setItem("questions", JSON.stringify(data.data.questions));
+                setQuizQuestions(data.data.questions || []);
             } else {
                 console.error(response);
                 alert("Failed to generate quiz questions. Please try again.");
@@ -46,12 +47,14 @@ function SettingsPage() {
 
     const handleStartGame = async () => {
         try {
-            const response = await fetch("http://127.0.0.1:9000/confirm-by-json/", {
+            const response = await apiFetch("/config/confirm-by-json/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(quizQuestions),
+                body: JSON.stringify({
+                    questions: quizQuestions
+                }),
             });
 
             if (response.ok) {
@@ -150,14 +153,14 @@ function SettingsPage() {
                         <ul>
                             {quizQuestions.map((question, index) => (
                                 <li key={index} className="quiz-question-item">
-                                    <p><strong>{question.question_text}</strong></p>
+                                    <p><strong>Question: {question.question_text}</strong></p>
                                     <ul className="quiz-options">
-                                        <li>{question.choiceA}</li>
-                                        <li>{question.choiceB}</li>
-                                        <li>{question.choiceC}</li>
-                                        <li>{question.choiceD}</li>
+                                        <li>Choice A: {question.choiceA}</li>
+                                        <li>Choice B: {question.choiceB}</li>
+                                        <li>Choice C: {question.choiceC}</li>
+                                        <li>Choice D: {question.choiceD}</li>
                                     </ul>
-                                    <p>{question.answer}</p>
+                                    <p>Answer:{question.answer}</p>
                                 </li>
                             ))}
                         </ul>

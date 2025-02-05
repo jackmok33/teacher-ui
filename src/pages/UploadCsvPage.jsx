@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/UploadCsvPage.css";
+import {apiFetch} from "../api.js";
 
 function UploadCsvPage() {
     const [file, setFile] = useState(null);
@@ -26,7 +27,7 @@ function UploadCsvPage() {
         formData.append("timeLimit", timeLimit);
 
         try {
-            const response = await fetch("http://127.0.0.1:9000/confirm-by-csv/", {
+            const response = await apiFetch("/config/confirm-by-csv/", {
                 method: "POST",
                 body: formData,
             });

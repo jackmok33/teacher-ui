@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../styles/UploadImagePage.css";
+import {apiFetch} from "../api.js";
 
 function UploadImagePage() {
     const [recognizedItem, setRecognizedItem] = useState("");
@@ -33,14 +34,14 @@ function UploadImagePage() {
                 formData.append("file", blob, `image-${Date.now()}.png`);
 
                 try {
-                    const response = await fetch("http://127.0.0.1:9000/recognize/", {
+                    const response = await apiFetch("/ai/recognize/", {
                         method: "POST",
                         body: formData,
                     });
 
                     if (response.ok) {
                         const data = await response.json();
-                        setRecognizedItem(data.data);
+                        setRecognizedItem(data.data.item);
                         alert("Item Recognized successfully!");
                     } else {
                         alert("Failed to upload image");
