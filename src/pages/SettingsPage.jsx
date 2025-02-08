@@ -31,7 +31,6 @@ function SettingsPage() {
 
             if (response.ok) {
                 const data = await response.json();
-                localStorage.setItem("questions", JSON.stringify(data.data.questions));
                 setQuizQuestions(data.data.questions || []);
             } else {
                 console.error(response);

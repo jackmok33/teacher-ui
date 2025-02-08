@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../styles/UploadImagePage.css";
-import {apiFetch} from "../api.js";
+import { apiFetch } from "../api.js";
 
 function UploadImagePage() {
-    const [recognizedItem, setRecognizedItem] = useState("");
+    const [recognizedItems, setRecognizedItems] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null);
     const [isCapturing, setIsCapturing] = useState(false);
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
@@ -41,8 +42,8 @@ function UploadImagePage() {
 
                     if (response.ok) {
                         const data = await response.json();
-                        setRecognizedItem(data.data.item);
-                        alert("Item Recognized successfully!");
+                        setRecognizedItems(data.data.items);
+                        alert("Items Recognized successfully!");
                     } else {
                         alert("Failed to upload image");
                     }
@@ -63,12 +64,16 @@ function UploadImagePage() {
         }
     };
 
+    const handleItemClick = (item) => {
+        setSelectedItem(item);
+    };
+
     const goToQuestionsSettings = () => {
-        if(recognizedItem) {
-            localStorage.setItem("recognizedItem", recognizedItem);
+        if (selectedItem) {
+            localStorage.setItem("recognizedItem", selectedItem.label);
             navigate("/settings");
         } else {
-            alert("No recognized item found.");
+            alert("Please select an item.");
         }
     };
 
@@ -96,16 +101,24 @@ function UploadImagePage() {
                     </div>
                 )}
                 <div className="captured-images">
-                    <h3>Recognized Object</h3>
-                    {recognizedItem !== "" ? (
+                    <h3>Recognized Objects</h3>
+                    {recognizedItems.length > 0 ? (
                         <div className="captured-images-grid">
-                            <div className="captured-text">{recognizedItem}</div>
+                            {recognizedItems.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className={`captured-text ${selectedItem === item ? "selected" : ""}`}
+                                    onClick={() => handleItemClick(item)}
+                                >
+                                    {item.label} - Probability: {item.score.toFixed(2)}
+                                </div>
+                            ))}
                         </div>
                     ) : (
                         ""
                     )}
                 </div>
-                {recognizedItem && (
+                {recognizedItems.length > 0 && (
                     <button onClick={goToQuestionsSettings} className="camera-button">
                         Go to Generate Quiz Questions
                     </button>
