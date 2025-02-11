@@ -44,7 +44,7 @@ function SettingsPage() {
         }
     };
 
-    const handleStartGame = async () => {
+    const handleSetBackgroundImage = async () => {
         try {
             const response = await apiFetch("/config/confirm-by-json/", {
                 method: "POST",
@@ -167,8 +167,8 @@ function SettingsPage() {
 
                     {/* Start Game Button */}
                     <div className="start-game-container">
-                        <button onClick={handleStartGame} className="start-game-button">
-                            Start Game
+                        <button onClick={handleSetBackgroundImage} className="start-game-button">
+                            Set Background Image
                         </button>
                     </div>
                 </>
