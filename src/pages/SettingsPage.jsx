@@ -57,7 +57,7 @@ function SettingsPage() {
             });
 
             if (response.ok) {
-                navigate("/room-code");
+                navigate("/background-image?ageGroup=" + age + "&topic=" + topic);
             } else {
                 console.error(response);
                 alert("Failed to confirm quiz questions. Please try again.");

@@ -6,6 +6,7 @@ import UploadCsvPage from "./pages/UploadCsvPage"
 import UploadImagePage from "./pages/UploadImagePage"
 import SettingsPage from "./pages/SettingsPage";
 import RoomCodePage from "./pages/RoomCodePage";
+import SetBackgroundImage from "./pages/SetBackgroundImage.jsx";
 import TeamsPage from "./pages/TeamsPage.jsx";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/upload-image" element={<UploadImagePage />} />
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/room-code" element={<RoomCodePage />} />
+                <Route path="/background-image" element={<SetBackgroundImage />} />
                 <Route path="/teams" element={<TeamsPage />} />
             </Routes>
         </Router>
