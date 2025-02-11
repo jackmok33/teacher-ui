@@ -34,7 +34,7 @@ function UploadCsvPage() {
 
             if (response.ok) {
                 setIsUploading(false);
-                navigate("/room-code");
+                navigate("/background-image");
             } else {
                 console.error(response);
                 alert("Failed to upload file. Please try again.");
