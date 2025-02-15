@@ -2,7 +2,7 @@
 
 ## Features
 
-- **Upload CSV**: Allows teachers to upload a spreadsheet containing questions or other relevant data to configure quizzes or games.
+- **Upload JSON**: Allows teachers to upload a JSON file containing questions or other relevant data to configure quizzes or games.
 - **Camera Capture**: Supports capturing images via the camera for object recognition.
 - **Quiz Question Generator**: Automatically generates quiz questions based on selected topics, age group, and other parameters.
 - **Time Limit Configuration**: Teachers can set time limits for quizzes to challenge students.
@@ -24,7 +24,7 @@ The project follows a modular structure for better organization and scalability:
 ```
 src/
 ├── components/       # Reusable React components
-├── pages/            # Main application pages (e.g., UploadCsvPage, SettingsPage)
+├── pages/            # Main application pages (e.g., UploadQuizQuestionPage, SettingsPage)
 ├── assets/           # Static assets (e.g., images, fonts)
 ├── styles/           # Global and component-specific styles
 ├── App.jsx           # Main application component
@@ -73,9 +73,9 @@ The project includes the following npm scripts:
 
 ## Pages Overview
 
-### 1. **UploadCsvPage**
+### 1. **UploadQuizQuestionPage**
 
-- **Purpose**: Allows teachers to upload a CSV file containing quiz or game data.
+- **Purpose**: Allows teachers to upload a JSON file containing quiz or game data.
 - **Key Features**:
     - File selection and upload progress tracking.
     - Time limit selection for quizzes.

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/UploadCsvPage.css";
-import {apiFetch} from "../api.js";
+import "../styles/UploadQuizQuestionPage.css";
+import { apiFetch } from "../api.js";
 
-function UploadCsvPage() {
+function UploadQuizQuestionPage() {
     const [file, setFile] = useState(null);
-    const [timeLimit, setTimeLimit] = useState("30"); // State for time limit selection
+    const [timeLimit, setTimeLimit] = useState("30");
     const [isUploading, setIsUploading] = useState(false);
     const navigate = useNavigate();
 
@@ -22,46 +22,55 @@ function UploadCsvPage() {
 
         setIsUploading(true);
 
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("timeLimit", timeLimit);
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+            try {
+                const jsonData = JSON.parse(event.target.result);
+                console.log(jsonData);
+                const response = await apiFetch("/config/confirm-questions/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(
+                        {
+                            questions: jsonData,
+                        }
+                    ),
+                });
 
-        try {
-            const response = await apiFetch("/config/confirm-by-csv/", {
-                method: "POST",
-                body: formData,
-            });
-
-            if (response.ok) {
-                setIsUploading(false);
-                navigate("/background-image");
-            } else {
-                console.error(response);
-                alert("Failed to upload file. Please try again.");
+                if (response.ok) {
+                    setIsUploading(false);
+                    navigate("/background-image");
+                } else {
+                    console.error(response);
+                    alert("Failed to upload file. Please try again.");
+                    setIsUploading(false);
+                }
+            } catch (error) {
+                console.error("Error reading or uploading file:", error);
+                alert("An error occurred while reading or uploading the file.");
                 setIsUploading(false);
             }
-        } catch (error) {
-            console.error("Error uploading file:", error);
-            alert("An error occurred while uploading the file.");
-            setIsUploading(false);
-        }
+        };
+        reader.readAsText(file);
     };
 
     return (
         <div className="upload-page">
-            <h1>Upload Your Spreadsheet</h1>
-            <p>Upload a spreadsheet to start the game setup</p>
+            <h1>Upload Your JSON File</h1>
+            <p>Upload a JSON file to start the game setup</p>
 
             <form onSubmit={handleUpload} className="upload-form">
                 {/* File Upload Section */}
                 <div className="file-upload-box">
                     <label className="file-upload-label">
-                        {file ? file.name : "Drag or Browse to select a file"}
+                        {file ? file.name : "Drag or Browse to select a JSON file"}
                         <input
                             type="file"
                             className="file-input"
                             onChange={handleFileChange}
-                            accept=".csv"
+                            accept=".json"
                             required
                         />
                     </label>
@@ -91,4 +100,4 @@ function UploadCsvPage() {
     );
 }
 
-export default UploadCsvPage;
+export default UploadQuizQuestionPage;

@@ -4,14 +4,14 @@ import "../styles/Homepage.css";
 
 function Homepage() {
     const [name, setName] = useState("");
-    const [gameMode, setGameMode] = useState("csv"); // State for selecting the game mode
+    const [gameMode, setGameMode] = useState("json"); // State for selecting the game mode
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem("teacherName", name); // Save teacher's name
-        if(gameMode === "csv") {
-            navigate("/upload-csv");
+        if(gameMode === "json") {
+            navigate("/upload-json");
         }else{
             navigate("/upload-image");
         }
@@ -36,7 +36,7 @@ function Homepage() {
                         onChange={(e) => setGameMode(e.target.value)}
                         className="game-mode-select"
                     >
-                        <option value="csv">Upload CSV File</option>
+                        <option value="json">Upload JSON File</option>
                         <option value="object-recognition">Object Recognition</option>
                     </select>
                     <button type="submit" className="submit-button">

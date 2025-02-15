@@ -44,9 +44,9 @@ function SettingsPage() {
         }
     };
 
-    const handleSetBackgroundImage = async () => {
+    const handleGoToSetBackgroundImage = async () => {
         try {
-            const response = await apiFetch("/config/confirm-by-json/", {
+            const response = await apiFetch("/config/confirm-questions/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -152,7 +152,7 @@ function SettingsPage() {
                         <ul>
                             {quizQuestions.map((question, index) => (
                                 <li key={index} className="quiz-question-item">
-                                    <p><strong>Question: {question.question_text}</strong></p>
+                                    <p><strong>Question: {question.question}</strong></p>
                                     <ul className="quiz-options">
                                         <li>Choice A: {question.choiceA}</li>
                                         <li>Choice B: {question.choiceB}</li>
@@ -167,7 +167,7 @@ function SettingsPage() {
 
                     {/* Start Game Button */}
                     <div className="start-game-container">
-                        <button onClick={handleSetBackgroundImage} className="start-game-button">
+                        <button onClick={handleGoToSetBackgroundImage} className="start-game-button">
                             Set Background Image
                         </button>
                     </div>
