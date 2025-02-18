@@ -8,6 +8,7 @@ import GenerateQuestionPage from "./pages/GenerateQuestionPage.jsx";
 import RoomCodePage from "./pages/RoomCodePage";
 import SetBackgroundImage from "./pages/SetBackgroundImage.jsx";
 import TeamsPage from "./pages/TeamsPage.jsx";
+import SettingsPage from "./pages/SettingsPage.jsx";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/room-code" element={<RoomCodePage />} />
                 <Route path="/background-image" element={<SetBackgroundImage />} />
                 <Route path="/teams" element={<TeamsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
             </Routes>
         </Router>
     );

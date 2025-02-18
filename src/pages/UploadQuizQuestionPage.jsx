@@ -25,7 +25,6 @@ function UploadQuizQuestionPage() {
         reader.onload = async (event) => {
             try {
                 const jsonData = JSON.parse(event.target.result);
-                console.log(jsonData);
                 const response = await apiFetch("/config/confirm-questions/", {
                     method: "POST",
                     headers: {

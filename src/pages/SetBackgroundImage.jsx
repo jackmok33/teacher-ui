@@ -54,7 +54,7 @@ function SetBackgroundImage() {
             });
 
             if (confirmResponse.ok) {
-                navigate("/room-code");
+                navigate("/settings");
             } else {
                 console.error(confirmResponse);
                 alert("Failed to confirm image. Please try again.");
