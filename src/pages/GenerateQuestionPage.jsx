@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/SettingsPage.css";
+import "../styles/GenerateQuestionPage.css";
 import {apiFetch} from "../api.js";
 
-function SettingsPage() {
+function GenerateQuestionPage() {
     const [age, setAge] = useState("7-9");
     const [questionCount, setQuestionCount] = useState(10);
     const [topic, setTopic] = useState("History");
@@ -177,4 +177,4 @@ function SettingsPage() {
     );
 }
 
-export default SettingsPage;
+export default GenerateQuestionPage;

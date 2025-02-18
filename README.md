@@ -24,7 +24,7 @@ The project follows a modular structure for better organization and scalability:
 ```
 src/
 ├── components/       # Reusable React components
-├── pages/            # Main application pages (e.g., UploadQuizQuestionPage, SettingsPage)
+├── pages/            # Main application pages (e.g., UploadQuizQuestionPage, GenerateQuestionPage)
 ├── assets/           # Static assets (e.g., images, fonts)
 ├── styles/           # Global and component-specific styles
 ├── App.jsx           # Main application component
@@ -81,9 +81,9 @@ The project includes the following npm scripts:
     - Time limit selection for quizzes.
     - Stores uploaded data and settings in `localStorage`.
 
-### 2. **SettingsPage**
+### 2. **GenerateQuestionPage**
 
-- **Purpose**: Configures quiz/game settings, such as topic, number of questions, age group, and time limit.
+- **Purpose**: Generate quiz questions based on selected settings.
 - **Key Features**:
     - Generates quiz questions via a backend API.
     - Displays generated questions and allows starting the game.

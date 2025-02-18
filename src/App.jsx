@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import UploadQuizQuestionPage from "./pages/UploadQuizQuestionPage.jsx"
 import UploadImagePage from "./pages/UploadImagePage"
-import SettingsPage from "./pages/SettingsPage";
+import GenerateQuestionPage from "./pages/GenerateQuestionPage.jsx";
 import RoomCodePage from "./pages/RoomCodePage";
 import SetBackgroundImage from "./pages/SetBackgroundImage.jsx";
 import TeamsPage from "./pages/TeamsPage.jsx";
@@ -17,7 +17,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/upload-json" element={<UploadQuizQuestionPage />} />
                 <Route path="/upload-image" element={<UploadImagePage />} />
-                <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/generate-questions" element={<GenerateQuestionPage />} />
                 <Route path="/room-code" element={<RoomCodePage />} />
                 <Route path="/background-image" element={<SetBackgroundImage />} />
                 <Route path="/teams" element={<TeamsPage />} />

@@ -68,10 +68,10 @@ function UploadImagePage() {
         setSelectedItem(item);
     };
 
-    const goToQuestionsSettings = () => {
+    const goToGenerateQuestions = () => {
         if (selectedItem) {
             localStorage.setItem("recognizedItem", selectedItem.label);
-            navigate("/settings");
+            navigate("/generate-questions");
         } else {
             alert("Please select an item.");
         }
@@ -119,7 +119,7 @@ function UploadImagePage() {
                     )}
                 </div>
                 {recognizedItems.length > 0 && (
-                    <button onClick={goToQuestionsSettings} className="camera-button">
+                    <button onClick={goToGenerateQuestions} className="camera-button">
                         Go to Generate Quiz Questions
                     </button>
                 )}
