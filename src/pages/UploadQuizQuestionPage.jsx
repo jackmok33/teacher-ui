@@ -5,7 +5,6 @@ import { apiFetch } from "../api.js";
 
 function UploadQuizQuestionPage() {
     const [file, setFile] = useState(null);
-    const [timeLimit, setTimeLimit] = useState("30");
     const [isUploading, setIsUploading] = useState(false);
     const navigate = useNavigate();
 
@@ -74,22 +73,6 @@ function UploadQuizQuestionPage() {
                             required
                         />
                     </label>
-                </div>
-
-                {/* Time Limit Selection */}
-                <div className="setting-item">
-                    <label htmlFor="timeLimit">Time Limit (seconds)</label>
-                    <select
-                        id="timeLimit"
-                        value={timeLimit}
-                        onChange={(e) => setTimeLimit(e.target.value)}
-                        className="time-limit-dropdown"
-                    >
-                        <option value="30">30 seconds</option>
-                        <option value="60">60 seconds</option>
-                        <option value="90">90 seconds</option>
-                        <option value="120">120 seconds</option>
-                    </select>
                 </div>
 
                 <button type="submit" className="upload-button" disabled={isUploading}>

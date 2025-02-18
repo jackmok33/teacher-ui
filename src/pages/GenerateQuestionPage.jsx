@@ -7,7 +7,6 @@ function GenerateQuestionPage() {
     const [age, setAge] = useState("7-9");
     const [questionCount, setQuestionCount] = useState(10);
     const [topic, setTopic] = useState("History");
-    const [timeLimit, setTimeLimit] = useState("30");
     const [quizQuestions, setQuizQuestions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -119,22 +118,6 @@ function GenerateQuestionPage() {
                         <option value="Spanish">Spanish</option>
                         <option value="Business">Business</option>
                         <option value="Economics">Economics</option>
-                    </select>
-                </div>
-
-                {/* Time Limit Selection */}
-                <div className="setting-item">
-                    <label htmlFor="timeLimit">Time Limit (seconds)</label>
-                    <select
-                        id="timeLimit"
-                        value={timeLimit}
-                        onChange={(e) => setTimeLimit(e.target.value)}
-                        className="setting-dropdown"
-                    >
-                        <option value="30">30 seconds</option>
-                        <option value="60">60 seconds</option>
-                        <option value="90">90 seconds</option>
-                        <option value="120">120 seconds</option>
                     </select>
                 </div>
 

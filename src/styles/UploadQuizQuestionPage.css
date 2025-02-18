@@ -103,19 +103,3 @@ p {
     margin-top: 20px;
     text-align: left;
 }
-
-.time-limit-dropdown {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.time-limit-dropdown:focus {
-    outline: none;
-    border-color: #4caf50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
-}
