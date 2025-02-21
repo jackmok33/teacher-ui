@@ -4,7 +4,7 @@
 
 - **Upload JSON**: Allows teachers to upload a JSON file containing questions or other relevant data to configure quizzes or games.
 - **Camera Capture**: Supports capturing images via the camera for object recognition.
-- **Quiz Question Generator**: Automatically generates quiz questions based on selected topics, age group, and other parameters.
+- **Quiz Question Generator**: Automatically generates quiz questions based on selected subjects, age group, and other parameters.
 - **Time Limit Configuration**: Teachers can set time limits for quizzes to challenge students.
 - **Start Game Option**: A seamless way to begin interactive quizzes or games with generated questions.
 
@@ -99,7 +99,7 @@ The application communicates with a backend API for generating quiz questions an
 ### Example API Request for Quiz Generation
 
 ```bash
-GET /generate?ageGroup=7-9&number=10&topic=History
+GET /generate?ageGroup=7-9&number=10&subject=History
 ```
 
 ## Customization

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/GenerateQuestionPage.css";
-import {apiFetch} from "../api.js";
+import { apiFetch } from "../api.js";
 
 function GenerateQuestionPage() {
     const [age, setAge] = useState("7-9");
-    const [questionCount, setQuestionCount] = useState(10);
-    const [topic, setTopic] = useState("History");
+    const [questionCount, setQuestionCount] = useState(5);
+    const [subject, setSubject] = useState("History");
     const [quizQuestions, setQuizQuestions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ function GenerateQuestionPage() {
         const params = new URLSearchParams({
             ageGroup: age,
             number: questionCount,
-            topic: topic,
+            subject: subject,
             item: localStorage.getItem("recognizedItem"),
         });
 
@@ -56,7 +56,7 @@ function GenerateQuestionPage() {
             });
 
             if (response.ok) {
-                navigate("/background-image?ageGroup=" + age + "&topic=" + topic);
+                navigate("/background-image?ageGroup=" + age + "&subject=" + subject);
             } else {
                 console.error(response);
                 alert("Failed to confirm quiz questions. Please try again.");
@@ -98,18 +98,18 @@ function GenerateQuestionPage() {
                         value={questionCount}
                         onChange={(e) => setQuestionCount(Number(e.target.value))}
                         min="1"
-                        max="10"
+                        max="5"
                         className="setting-input"
                     />
                 </div>
 
-                {/* Topic Selection */}
+                {/* Subject Selection */}
                 <div className="setting-item">
-                    <label htmlFor="topic">Topic</label>
+                    <label htmlFor="subject">Subject</label>
                     <select
-                        id="topic"
-                        value={topic}
-                        onChange={(e) => setTopic(e.target.value)}
+                        id="subject"
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
                         className="setting-dropdown"
                     >
                         <option value="History">History</option>
@@ -142,7 +142,7 @@ function GenerateQuestionPage() {
                                         <li>Choice C: {question.choiceC}</li>
                                         <li>Choice D: {question.choiceD}</li>
                                     </ul>
-                                    <p>Answer:{question.answer}</p>
+                                    <p>Answer: {question.answer}</p>
                                 </li>
                             ))}
                         </ul>

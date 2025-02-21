@@ -10,13 +10,13 @@ function SetBackgroundImage() {
     const [imageUrl, setImageUrl] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [ageGroup, setAgeGroup] = useState(params.get("ageGroup") || "");
-    const [topic, setTopic] = useState(params.get("topic") || "");
+    const [subject, setSubject] = useState(params.get("subject") || "");
 
     const handleGenerateImage = async () => {
         setIsLoading(true);
 
         try {
-            const response = await apiFetch(`/ai/generate-image/?ageGroup=${ageGroup}&topic=${topic}`, {
+            const response = await apiFetch(`/ai/generate-image/?ageGroup=${ageGroup}&subject=${subject}`, {
                 method: "GET",
             });
 
@@ -80,9 +80,9 @@ function SetBackgroundImage() {
                     </select>
                 </label>
                 <label>
-                    Topic:
-                    <select value={topic} onChange={(e) => setTopic(e.target.value)}>
-                        <option value="">Select Topic</option>
+                    Subject:
+                    <select value={subject} onChange={(e) => setSubject(e.target.value)}>
+                        <option value="">Select Subject</option>
                         <option value="History">History</option>
                         <option value="English">English</option>
                         <option value="French">French</option>
