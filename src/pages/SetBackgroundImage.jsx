@@ -7,23 +7,27 @@ function SetBackgroundImage() {
     const location = useLocation();
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
-    const [imageUrl, setImageUrl] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
+    const [imageUrl1, setImageUrl1] = useState("");
+    const [imageUrl2, setImageUrl2] = useState("");
+    const [isLoading1, setIsLoading1] = useState(false);
+    const [isLoading2, setIsLoading2] = useState(false);
+    const [isConfirmed1, setIsConfirmed1] = useState(false);
+    const [isConfirmed2, setIsConfirmed2] = useState(false);
     const [ageGroup, setAgeGroup] = useState(params.get("ageGroup") || "");
     const [subject, setSubject] = useState(params.get("subject") || "");
 
-    const handleGenerateImage = async () => {
-        setIsLoading(true);
+    const handleGenerateImage1 = async () => {
+        setIsLoading1(true);
 
         try {
-            const response = await apiFetch(`/ai/generate-image/?ageGroup=${ageGroup}&subject=${subject}`, {
+            const response = await apiFetch(`/ai/generate-background-image/?ageGroup=${ageGroup}&subject=${subject}`, {
                 method: "GET",
             });
 
             if (response.ok) {
                 const blob = await response.blob();
                 const imageUrl = URL.createObjectURL(blob);
-                setImageUrl(imageUrl);
+                setImageUrl1(imageUrl);
             } else {
                 console.error(response);
                 alert("Failed to generate image. Please try again.");
@@ -32,11 +36,35 @@ function SetBackgroundImage() {
             console.error("Error generating image:", error);
             alert("An error occurred while generating image.");
         } finally {
-            setIsLoading(false);
+            setIsLoading1(false);
         }
     };
 
-    const handleConfirmImage = async () => {
+    const handleGenerateImage2 = async () => {
+        setIsLoading2(true);
+
+        try {
+            const response = await apiFetch(`/ai/generate-quiz-background-image/?ageGroup=${ageGroup}&subject=${subject}`, {
+                method: "GET",
+            });
+
+            if (response.ok) {
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
+                setImageUrl2(imageUrl);
+            } else {
+                console.error(response);
+                alert("Failed to generate image. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error generating image:", error);
+            alert("An error occurred while generating image.");
+        } finally {
+            setIsLoading2(false);
+        }
+    };
+
+    const handleConfirmImage = async (imageUrl, apiEndpoint, setIsConfirmed) => {
         if (!imageUrl) {
             alert("No image to confirm.");
             return;
@@ -48,13 +76,16 @@ function SetBackgroundImage() {
             const formData = new FormData();
             formData.append("file", blob, "background-image.png");
 
-            const confirmResponse = await apiFetch("/config/confirm-background/", {
+            const confirmResponse = await apiFetch(apiEndpoint, {
                 method: "POST",
                 body: formData,
             });
 
             if (confirmResponse.ok) {
-                navigate("/settings");
+                setIsConfirmed(true);
+                if (isConfirmed1 && isConfirmed2) {
+                    navigate("/settings");
+                }
             } else {
                 console.error(confirmResponse);
                 alert("Failed to confirm image. Please try again.");
@@ -67,7 +98,7 @@ function SetBackgroundImage() {
 
     return (
         <div className="image-page">
-            <h1 className="title">Generated Image</h1>
+            <h1 className="title">Generated Images</h1>
             <div className="selectors">
                 <label>
                     Age Group:
@@ -92,17 +123,30 @@ function SetBackgroundImage() {
                     </select>
                 </label>
             </div>
-            <button onClick={handleGenerateImage} disabled={isLoading} className="generate-button">
-                {isLoading ? "Generating..." : "Generate Image"}
+            <button onClick={handleGenerateImage1} disabled={isLoading1} className="generate-button">
+                {isLoading1 ? "Generating..." : "Generate Image 1"}
             </button>
-            {imageUrl && (
-                <>
-                    <img src={imageUrl} alt="Generated" className="generated-image" />
-                    <button onClick={handleConfirmImage} className="confirm-button">
-                        Confirm Image
-                    </button>
-                </>
-            )}
+            <button onClick={handleGenerateImage2} disabled={isLoading2} className="generate-button">
+                {isLoading2 ? "Generating..." : "Generate Image 2"}
+            </button>
+            <div className="image-container">
+                {imageUrl1 && (
+                    <div className="image-wrapper">
+                        <img src={imageUrl1} alt="Generated 1" className="generated-image" />
+                        <button onClick={() => handleConfirmImage(imageUrl1, "/config/confirm-background/", setIsConfirmed1)} className="confirm-button">
+                            Confirm Image 1
+                        </button>
+                    </div>
+                )}
+                {imageUrl2 && (
+                    <div className="image-wrapper">
+                        <img src={imageUrl2} alt="Generated 2" className="generated-image" />
+                        <button onClick={() => handleConfirmImage(imageUrl2, "/config/confirm-quiz-background/", setIsConfirmed2)} className="confirm-button">
+                            Confirm Image 2
+                        </button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
