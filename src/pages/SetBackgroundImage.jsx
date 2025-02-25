@@ -112,18 +112,18 @@ function SetBackgroundImage() {
 
             <button
                 onClick={() => handleGenerateImage("/ai/generate-background-image/", setImageUrl1, setIsLoading1)}
-                disabled={isLoading1}
+                disabled={isLoading1 || imageUrl1}
                 className="generate-button"
             >
-                {isLoading1 ? "Generating..." : "Generate Image 1"}
+                {isLoading1 ? "Generating..." : "Generate board background image image"}
             </button>
 
             <button
                 onClick={() => handleGenerateImage("/ai/generate-quiz-background-image/", setImageUrl2, setIsLoading2)}
-                disabled={isLoading2}
+                disabled={isLoading2 || !imageUrl1}
                 className="generate-button"
             >
-                {isLoading2 ? "Generating..." : "Generate Image 2"}
+                {isLoading2 ? "Generating..." : "Generate quiz panel background image"}
             </button>
 
             <div className="image-container">
@@ -135,7 +135,7 @@ function SetBackgroundImage() {
                             className="confirm-button"
                             disabled={isConfirmed1}
                         >
-                            {isConfirmed1 ? "Confirmed" : "Confirm Image 1"}
+                            {isConfirmed1 ? "Confirmed" : "Confirm board background image"}
                         </button>
                     </div>
                 )}
@@ -148,7 +148,7 @@ function SetBackgroundImage() {
                             className="confirm-button"
                             disabled={isConfirmed2}
                         >
-                            {isConfirmed2 ? "Confirmed" : "Confirm Image 2"}
+                            {isConfirmed2 ? "Confirmed" : "Confirm quiz panel background image"}
                         </button>
                     </div>
                 )}

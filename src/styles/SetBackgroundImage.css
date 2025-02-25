@@ -33,6 +33,11 @@
     background-color: #45a049;
 }
 
+.generate-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
 .generated-image {
     max-width: 80%;
     height: auto;
