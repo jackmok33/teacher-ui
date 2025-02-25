@@ -22,7 +22,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 20px 0;
+    margin: 20px 10px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -69,7 +69,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 20px 0;
+    margin: 20px 10px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -84,6 +84,7 @@
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    width: 100%;
 }
 
 .image-wrapper {
@@ -97,17 +98,26 @@
     margin-bottom: 10px;
 }
 
-.confirm-button {
-    padding: 10px;
-    background-color: #4CAF50;
+.navigate-button {
+    background-color: #008CBA;
     color: white;
-    font-size: 1rem;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 0;
+    cursor: pointer;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.confirm-button:hover {
-    background-color: #45a049;
+.navigate-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.navigate-button:hover:not(:disabled) {
+    background-color: #007B9A;
 }
