@@ -7,7 +7,7 @@ function SettingsPage() {
     const [timeLimit, setTimeLimit] = useState(30);
     const [teamMode, setTeamMode] = useState("FFA");
     const [numberOfPlayers, setNumberOfPlayers] = useState(2);
-    const [quizMode, setQuizMode] = useState("DEFAULT");
+    const [quizMode, setQuizMode] = useState("NORMAL");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -94,8 +94,9 @@ function SettingsPage() {
                         onChange={(e) => setQuizMode(e.target.value)}
                         className="setting-dropdown"
                     >
-                        <option value="DEFAULT">DEFAULT</option>
+                        <option value="NORMAL">NORMAL</option>
                         <option value="BUZZ">BUZZ</option>
+                        <option value="TIME_RUSH">TIME RUSH</option>
                     </select>
                 </div>
 
