@@ -82,7 +82,7 @@ function SetBackgroundImage() {
 
     return (
         <div className="image-page">
-            <h1 className="title">Generated Images</h1>
+            <h1 className="title">Background Image Generator</h1>
 
             <div className="selectors">
                 <label>

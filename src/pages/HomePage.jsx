@@ -3,13 +3,11 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate for routin
 import "../styles/Homepage.css";
 
 function Homepage() {
-    const [name, setName] = useState("");
     const [gameMode, setGameMode] = useState("json"); // State for selecting the game mode
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.setItem("teacherName", name); // Save teacher's name
         if(gameMode === "json") {
             navigate("/upload-json");
         }else{
@@ -23,14 +21,6 @@ function Homepage() {
                 <h1>Welcome to Teacher&#39;s Dashboard</h1>
                 <p>Manage your board game settings and create a unique, engaging experience for your students!</p>
                 <form className="name-form" onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Enter your name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="name-input"
-                        required
-                    />
                     <select
                         value={gameMode}
                         onChange={(e) => setGameMode(e.target.value)}

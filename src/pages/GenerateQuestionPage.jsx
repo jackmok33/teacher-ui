@@ -69,7 +69,7 @@ function GenerateQuestionPage() {
 
     return (
         <div className="game-settings-page">
-            <h1>Game Settings</h1>
+            <h1>Quiz Question Generator</h1>
             <p>Customize the settings for your game and create a unique experience for your students.</p>
 
             <form onSubmit={handleGenerate} className="settings-form">
