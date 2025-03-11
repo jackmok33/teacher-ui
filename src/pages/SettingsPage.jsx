@@ -44,7 +44,7 @@ function SettingsPage() {
             <form onSubmit={handleSubmit} className="settings-form">
                 {/* Time Limit */}
                 <div className="setting-item">
-                    <label htmlFor="timeLimit">Time Limit (minutes)</label>
+                    <label htmlFor="timeLimit">Time Limit (seconds)</label>
                     <input
                         type="number"
                         id="timeLimit"
