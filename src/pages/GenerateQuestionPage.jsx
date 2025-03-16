@@ -11,38 +11,59 @@ function GenerateQuestionPage() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
+    // Generate quiz questions sequentially for each recognized item
     const handleGenerate = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         setQuizQuestions([]);
 
-        const params = new URLSearchParams({
-            ageGroup: age,
-            number: questionCount,
-            subject: subject,
-            item: localStorage.getItem("recognizedItem"),
-        });
+        // Retrieve recognizedItems from localStorage and parse it as an array
+        const recognizedItems = JSON.parse(localStorage.getItem("recognizedItems") || "[]");
+        let allQuestions = [];
+        if(recognizedItems.length * questionCount < 30) {
+            alert("Please select more items or increase the number of questions.");
+            setIsLoading(false);
+            return;
+        }
 
-        try {
-            const response = await apiFetch(`/ai/generate/?${params.toString()}`, {
-                method: "GET",
+        // Loop through each recognized item one by one
+        for (const item of recognizedItems) {
+            // Prepare URL parameters for the current recognized item using its label
+            const params = new URLSearchParams({
+                ageGroup: age,
+                number: questionCount,
+                subject: subject,
+                item: item.label,
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                setQuizQuestions(data.data.questions || []);
-            } else {
-                console.error(response);
-                alert("Failed to generate quiz questions. Please try again.");
+            try {
+                // Await the API request for the current recognized item
+                const response = await apiFetch(`/ai/generate/?${params.toString()}`, {
+                    method: "GET",
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    // If the API returns questions, append them to the allQuestions array
+                    if (data.data.questions && Array.isArray(data.data.questions)) {
+                        allQuestions = allQuestions.concat(data.data.questions);
+                    }
+                } else {
+                    console.error(`Failed to generate quiz questions for item ${item.label}:`, response);
+                    alert(`Failed to generate quiz questions for item ${item.label}. Please try again.`);
+                }
+            } catch (error) {
+                console.error(`Error generating quiz questions for item ${item.label}:`, error);
+                alert(`An error occurred while generating quiz questions for item ${item.label}.`);
             }
-        } catch (error) {
-            console.error("Error generating quiz questions:", error);
-            alert("An error occurred while generating quiz questions.");
-        } finally {
-            setIsLoading(false);
         }
+
+        // Update state with the accumulated questions
+        setQuizQuestions(allQuestions);
+        setIsLoading(false);
     };
 
+    // Confirm the generated questions and navigate to the background image setting page
     const handleGoToSetBackgroundImage = async () => {
         try {
             const response = await apiFetch("/config/confirm-questions/", {
@@ -51,7 +72,7 @@ function GenerateQuestionPage() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    questions: quizQuestions
+                    questions: quizQuestions,
                 }),
             });
 

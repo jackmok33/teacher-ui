@@ -5,12 +5,13 @@ import { apiFetch } from "../api.js";
 
 function UploadImagePage() {
     const [recognizedItems, setRecognizedItems] = useState([]);
-    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedItems, setSelectedItems] = useState([]); // Array to store multiple selected items
     const [isCapturing, setIsCapturing] = useState(false);
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const navigate = useNavigate(); // Initialize useNavigate
 
+    // Start the camera and set up the video stream
     const startCamera = async () => {
         try {
             setIsCapturing(true);
@@ -24,6 +25,7 @@ function UploadImagePage() {
         }
     };
 
+    // Capture image from the video stream, send it to the recognition API, and update recognizedItems
     const captureImage = async () => {
         if (videoRef.current && canvasRef.current) {
             const context = canvasRef.current.getContext("2d");
@@ -43,7 +45,7 @@ function UploadImagePage() {
                     if (response.ok) {
                         const data = await response.json();
                         setRecognizedItems(data.data.items);
-                        alert("Items Recognized successfully!");
+                        alert("Items recognized successfully!");
                     } else {
                         alert("Failed to upload image");
                     }
@@ -55,6 +57,7 @@ function UploadImagePage() {
         }
     };
 
+    // Stop the camera and release the video stream tracks
     const stopCamera = () => {
         setIsCapturing(false);
         if (videoRef.current && videoRef.current.srcObject) {
@@ -64,16 +67,29 @@ function UploadImagePage() {
         }
     };
 
+    // Toggle item selection: add to selection if not selected, or remove if already selected
     const handleItemClick = (item) => {
-        setSelectedItem(item);
+        const isSelected = selectedItems.some(
+            (selected) => selected.label === item.label
+        );
+        if (isSelected) {
+            // Remove the item if it is already selected
+            setSelectedItems(selectedItems.filter(
+                (selected) => selected.label !== item.label
+            ));
+        } else {
+            // Add the item if it is not selected yet
+            setSelectedItems([...selectedItems, item]);
+        }
     };
 
+    // Save selected items in localStorage and navigate to the quiz question generation page
     const goToGenerateQuestions = () => {
-        if (selectedItem) {
-            localStorage.setItem("recognizedItem", selectedItem.label);
+        if (selectedItems.length >= 6) {
+            localStorage.setItem("recognizedItems", JSON.stringify(selectedItems));
             navigate("/generate-questions");
         } else {
-            alert("Please select an item.");
+            alert("Please select at least six items.");
         }
     };
 
@@ -107,7 +123,11 @@ function UploadImagePage() {
                             {recognizedItems.map((item, index) => (
                                 <div
                                     key={index}
-                                    className={`captured-text ${selectedItem === item ? "selected" : ""}`}
+                                    className={`captured-text ${
+                                        selectedItems.some(selected => selected.label === item.label)
+                                            ? "selected"
+                                            : ""
+                                    }`}
                                     onClick={() => handleItemClick(item)}
                                 >
                                     {item.label} - Probability: {item.score.toFixed(2)}
@@ -118,6 +138,22 @@ function UploadImagePage() {
                         ""
                     )}
                 </div>
+                {recognizedItems.length > 0 && (
+                    <div className="selected-items">
+                        <h3>Selected Items</h3>
+                        {selectedItems.length > 0 ? (
+                            <ul>
+                                {selectedItems.map((item, index) => (
+                                    <li key={index}>
+                                        {item.label} - Probability: {item.score.toFixed(2)}
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>No items selected.</p>
+                        )}
+                    </div>
+                )}
                 {recognizedItems.length > 0 && (
                     <button onClick={goToGenerateQuestions} className="camera-button">
                         Go to Generate Quiz Questions
