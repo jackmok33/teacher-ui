@@ -77,6 +77,16 @@ function GenerateQuestionPage() {
             });
 
             if (response.ok) {
+                // Release the question generator model
+                const response = await apiFetch("/ai/release-question-generator/",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                if (!response.ok) {
+                    console.error("Failed to release question generator model:", response);
+                }
                 navigate("/background-image?ageGroup=" + age + "&subject=" + subject);
             } else {
                 console.error(response);

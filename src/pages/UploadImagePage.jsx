@@ -84,8 +84,18 @@ function UploadImagePage() {
     };
 
     // Save selected items in localStorage and navigate to the quiz question generation page
-    const goToGenerateQuestions = () => {
+    const goToGenerateQuestions = async () => {
         if (selectedItems.length >= 6) {
+            // Release the detection model
+            const response = await apiFetch("/ai/release-detection/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            if (!response.ok) {
+                console.error("Failed to release detection model:", response);
+            }
             localStorage.setItem("recognizedItems", JSON.stringify(selectedItems));
             navigate("/generate-questions");
         } else {
