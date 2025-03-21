@@ -21,7 +21,7 @@ function Homepage() {
             <div className="hero">
                 <img src="logo.png" style={{width:"200px"}}></img>
                 <h1>Classroom Explorer Teacher&#39;s Dashboard</h1>
-                <p>Dashboard to setup the game environment for students. Please read below for the step guide.</p>
+                <p>Dashboard to setup the game environment for students in 3 steps. Please read below for the step guide.</p>
                 <form className="name-form" onSubmit={handleSubmit}>
                     <select
                         value={gameMode}
