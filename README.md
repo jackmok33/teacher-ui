@@ -88,7 +88,6 @@ The project includes the following npm scripts:
     - Generates quiz questions via a backend API.
     - Displays generated questions and allows starting the game.
 
-
 ## API Integration
 
 The application communicates with a backend API for generating quiz questions and processing uploads. Example API endpoints:
@@ -101,6 +100,41 @@ The application communicates with a backend API for generating quiz questions an
 ```bash
 GET /generate?ageGroup=7-9&number=10&subject=History
 ```
+
+## Backend Description
+
+The backend for the Educational Project is managed within the [EducationalQuestionGenerator](https://github.com/System-Engineering-Group-9/EducationalQuestionGenerator) repository and provides core functionality for the quiz question generator. Its main features include:
+
+- **AI Server**:  
+  A FastAPI-based server that handles API requests for:
+    - **Image Recognition**: Uses YOLO for object detection.
+    - **Question Generation**: Leverages the quantized IBM granite-3.0-8b-instruct model to generate educational quiz questions.
+
+- **Installation & Prerequisites**:
+    - **CUDA 12.4 or later** is required for GPU acceleration.
+    - **Python 3.8 or later** must be installed.
+    - Dependencies are managed via `pip`, with special configuration for `llama-cpp-python` (enabling CUDA or Metal support for MacOS).
+
+- **Usage**:
+    - **GUI Application**: Launch the desktop application with `python ./main.py` to generate questions interactively.
+    - **API Server**: Start the FastAPI server with:
+      ```bash
+      uvicorn app.main:app --reload
+      ```
+      This exposes endpoints such as `/ai/recognize/` and `/ai/generate/` for integration with the front-end.
+
+- **Docker Deployment**:
+    - **Build the Docker image**:
+      ```bash
+      docker build -t educational-quiz-generator .
+      ```
+    - **Run the Docker container**:
+      ```bash
+      docker run --gpus all -p 8000:8000 educational-quiz-generator
+      ```
+      The API can then be accessed at `http://127.0.0.1:8000`.
+
+For further details on backend setup, testing, and troubleshooting, refer to the [EducationalQuestionGenerator GitHub repository](https://github.com/System-Engineering-Group-9/EducationalQuestionGenerator).
 
 ## Customization
 
