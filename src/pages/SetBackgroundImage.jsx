@@ -82,10 +82,10 @@ function SetBackgroundImage() {
 
     return (
         <div className="image-page">
-            <h1 className="title">Background Image Generator</h1>
+            <h1 className="heading">Background Image Generator</h1>
 
             <div className="selectors">
-                <label>
+                <label className="container">
                     Age Group:
                     <select value={ageGroup} onChange={(e) => setAgeGroup(e.target.value)}>
                         <option value="">Select Age Group</option>
@@ -96,7 +96,7 @@ function SetBackgroundImage() {
                     </select>
                 </label>
 
-                <label>
+                <label className="container">
                     Subject:
                     <select value={subject} onChange={(e) => setSubject(e.target.value)}>
                         <option value="">Select Subject</option>
