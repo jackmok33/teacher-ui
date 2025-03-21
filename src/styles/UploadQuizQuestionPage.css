@@ -1,15 +1,21 @@
 .upload-page {
-    min-height: 100vh;
-    width: 100vw;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: #e9ecef;
+    max-width: 100%; /* Maximum width of the page container */
+    margin: 20px auto; /* Center the page horizontally */
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 60px; /* Increased padding at the bottom */
+    padding: 40px; /* Add padding around the content */
+    background-color: #f9f9f9; /* Light gray background */
+    border-radius: 15px; /* Rounded corners */
+    min-height: 100vh; /* Ensure it extends vertically */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for a lifted effect */
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
 }
 
 .upload-container {
-    background-color: #ffffff;
     width: 100%;
     height: 100vh; /* Full viewport height */
     border-radius: 20px; /* Remove radius if you want edge-to-edge */

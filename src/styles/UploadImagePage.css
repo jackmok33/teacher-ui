@@ -6,16 +6,20 @@ html, body, #root {
 }
 
 .upload-page {
+    max-width: 100%; /* Maximum width of the page container */
+    margin: 20px auto; /* Center the page horizontally */
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 60px; /* Increased padding at the bottom */
+    padding: 40px; /* Add padding around the content */
+    background-color: #f9f9f9; /* Light gray background */
+    border-radius: 15px; /* Rounded corners */
+    min-height: 100vh; /* Ensure it extends vertically */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for a lifted effect */
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
-    width: 100%;             /* Full viewport width */
-    height: 100vh;            /* Full viewport height */
-    background-color: #f4f7fc; /* Light background color */
-    color: #333;              /* Text color */
-    text-align: center;
-    padding: 20px;               /* Remove extra padding for full-screen effect */
+    flex-direction: column;
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */         /* Remove extra padding for full-screen effect */
 }
 
 .camera-section {
@@ -23,10 +27,9 @@ html, body, #root {
     max-width: 100%;    /* Restrict max width, adjust as needed */
     margin:0px auto;      /* Center the section horizontally */
     flex: 1;
-    background-color: white; /* White background for the section */
-    padding: 40px;           /* Increase padding for a spacious layout */
-    border-radius: 15px;     /* Rounded corners */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
+
+    
+
     text-align: center;
     display: flex;
     flex-direction: column;
