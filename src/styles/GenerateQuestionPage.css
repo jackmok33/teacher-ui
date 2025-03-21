@@ -36,10 +36,18 @@ p {
 
 /* Individual setting item styles */
 .setting-item {
-    background-color: #fff; /* White background */
-    padding: 20px; /* Inner padding for spacing */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background: linear-gradient(135deg, #f0f8ff, #e0f0ff); /* subtle gradient background */
+    border: 1px solid #bbb;
+    border-radius: 10px; /* increased rounded corners */
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.setting-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* Labels for the form inputs */
@@ -53,21 +61,23 @@ p {
 /* Dropdown and input field styles */
 .setting-dropdown,
 .setting-input {
-    width: 100%; /* Full width of the container */
-    padding: 15px; /* Larger padding for a better click/tap area */
-    font-size: 1.1rem; /* Slightly larger font size */
+    width: 100%; /* Full width */
+    padding: 15px 20px; /* Increased horizontal padding */
+    font-size: 1.1rem; /* Slightly larger font */
     border: 1px solid #ddd; /* Light gray border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #fafafa; /* Light background for the input field */
-    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 12px; /* More rounded corners */
+    background-color: #fff; /* White background for clarity */
+    cursor: pointer; /* Pointer on hover */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Styles for dropdown and input field when focused */
 .setting-dropdown:focus,
 .setting-input:focus {
-    outline: none; /* Remove the default outline */
+    outline: none; /* Remove default outline */
     border-color: #4CAF50; /* Green border on focus */
-    background-color: #f1f1f1; /* Slightly darker background */
+    background-color: #f9f9f9; /* Slightly off-white background */
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); /* Focus ring for accessibility */
 }
 
 /* Apply button styles */
