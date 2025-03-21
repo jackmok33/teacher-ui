@@ -1,12 +1,18 @@
 .settings-page {
+    max-width: 100%; /* Maximum width of the page container */
+    margin: 20px auto; /* Center the page horizontally */
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 60px; /* Increased padding at the bottom */
+    padding: 40px; /* Add padding around the content */
+    background-color: #f9f9f9; /* Light gray background */
+    border-radius: 15px; /* Rounded corners */
+    min-height: 100vh; /* Ensure it extends vertically */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for a lifted effect */
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f4f7fc;
-    color: #333;
-    text-align: center;
+    flex-direction: column;
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
 }
 
 h1 {
@@ -16,10 +22,11 @@ h1 {
 }
 
 .settings-form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    width: 300px;
+    width: 100%;
+    max-width: 800px;
 }
 
 .setting-item {
@@ -51,6 +58,8 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    grid-column: 1 / -1; /* Span the button across all columns */
+    justify-self: center; /* Center the button horizontally */
 }
 
 .apply-button:hover {
