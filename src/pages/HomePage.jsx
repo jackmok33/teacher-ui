@@ -19,8 +19,9 @@ function Homepage() {
     return (
         <div className="homepage">
             <div className="hero">
-                <h1>Welcome to Teacher&#39;s Dashboard</h1>
-                <p>Manage your board game settings and create a unique, engaging experience for your students!</p>
+                <img src="logo.png" style={{width:"200px"}}></img>
+                <h1>Classroom Explorer Teacher&#39;s Dashboard</h1>
+                <p>Dashboard to setup the game environment for students. Please read below for the step guide.</p>
                 <form className="name-form" onSubmit={handleSubmit}>
                     <select
                         value={gameMode}
@@ -36,7 +37,7 @@ function Homepage() {
                 </form>
                 <br/>
                 <br/>
-                <h2>Step Guide</h2>
+                <h1>Step Guide</h1>
                 <img src={teacherFlow} alt="Teacher UI Flow" style={{width:"700px"}}></img>
                 <div className="textbody">
                     <h3>Step 1 - Generate Questions</h3>
