@@ -57,7 +57,8 @@ function UploadQuizQuestionPage() {
     return (
         <div className="upload-page">
             <div className="upload-container">
-                <h1>Upload Your JSON File</h1>
+                <h1>Step 1 - Question Preparation </h1>
+                <h2>Upload Your JSON File</h2>
                 <p>Upload a JSON file to start the game setup</p>
 
                 <form onSubmit={handleUpload} className="upload-form">

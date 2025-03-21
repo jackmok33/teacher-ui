@@ -10,6 +10,8 @@
     border-radius: 15px; /* Rounded corners */
     height: 90%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for a lifted effect */
+    justify-content: center;
+    text-align: center;
 }
 
 /* Main heading styles */

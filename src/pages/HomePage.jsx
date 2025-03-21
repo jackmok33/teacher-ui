@@ -40,15 +40,15 @@ function Homepage() {
                 <h1>Step Guide</h1>
                 <img src={teacherFlow} alt="Teacher UI Flow" style={{width:"700px"}}></img>
                 <div className="textbody">
-                    <h3>Step 1 - Generate Questions</h3>
+                    <h2>Step 1 - Question Preparation</h2>
                     <p>User can decide generating questions by i) uploading JSON file or ii) Using Object Recognition to recognise object as prompts for AI generated Questions</p>
                 </div>
                 <div className="textbody">
-                    <h3>Step 2 - Generate Background Image</h3>
+                    <h2>Step 2 - Generate Background Image</h2>
                     <p>User then can customise the prompts for generating the background image for the game board and the quiz background</p>
                 </div>
                 <div className="textbody">
-                    <h3>Step 3 - Game Config</h3>
+                    <h2>Step 3 - Game Configuration</h2>
                     <p>User then can finalise the game configuration and generate room code for student to join</p>
                 </div>
                 

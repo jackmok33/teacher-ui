@@ -40,7 +40,7 @@ function SettingsPage() {
 
     return (
         <div className="settings-page">
-            <h1>Game Settings</h1>
+            <h1>Step 3 - Game Configuration</h1>
             <form onSubmit={handleSubmit} className="settings-form">
                 {/* Time Limit */}
                 <div className="setting-item">
