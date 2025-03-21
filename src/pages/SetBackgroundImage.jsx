@@ -83,6 +83,7 @@ function SetBackgroundImage() {
     return (
         <div className="image-page">
             <h1 className="heading">Step 2 - Generate Background Image</h1>
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25666.png" style={{width:"150px"}}></img>
             <h2>Background Image Generator</h2>
 
             <div className="selectors">

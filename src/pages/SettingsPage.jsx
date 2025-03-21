@@ -41,6 +41,7 @@ function SettingsPage() {
     return (
         <div className="settings-page">
             <h1>Step 3 - Game Configuration</h1>
+            <img src="https://static-00.iconduck.com/assets.00/settings-icon-245x256-yljp2dn9.png" style={{width:"150px"}}></img>
             <form onSubmit={handleSubmit} className="settings-form">
                 {/* Time Limit */}
                 <div className="setting-item">

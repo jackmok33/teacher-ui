@@ -101,6 +101,7 @@ function GenerateQuestionPage() {
     return (
         <div className="game-settings-page">
             <h1>Step 1 - Question Preparation</h1>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/IBM_granite_2_cubes_logo.svg/1200px-IBM_granite_2_cubes_logo.svg.png" style={{width:"150px"}}></img>
             <h2>ii) Quiz Question Generator</h2>
             <p>Customize the settings for your game and create a unique experience for your students.</p>
 

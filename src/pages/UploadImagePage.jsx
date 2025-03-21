@@ -107,6 +107,7 @@ function UploadImagePage() {
         <div className="upload-page">
             <div className="camera-section">
                 <h1>Step 1 - Question Preparation</h1>
+                <img src="https://static.thenounproject.com/png/5198977-200.png" style={{width:"150px"}}></img>
                 <h2>i) Capture Images For Recognition</h2>
                 {!isCapturing && (
                     <button onClick={startCamera} className="camera-button">
