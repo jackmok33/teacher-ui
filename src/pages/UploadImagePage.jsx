@@ -106,7 +106,8 @@ function UploadImagePage() {
     return (
         <div className="upload-page">
             <div className="camera-section">
-                <h1>Capture Images For Recognition</h1>
+                <h1>Step 1 - Question Preparation</h1>
+                <h2>i) Capture Images For Recognition</h2>
                 {!isCapturing && (
                     <button onClick={startCamera} className="camera-button">
                         Start Camera
