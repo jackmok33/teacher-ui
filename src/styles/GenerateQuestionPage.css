@@ -42,7 +42,6 @@ p {
     flex-direction: row; /* Three items in a row */
     gap: 20px;
     width: 100%;
-    justify-content: center;
 }
 
 
