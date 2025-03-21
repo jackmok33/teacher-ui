@@ -1,0 +1,12 @@
+.footer {
+    background-color: rgb(185, 185, 185); /* Changed background color to grey */
+    text-align: center;
+    padding: 10px 10px; /* Increased padding */
+
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    font-size: 18px; /* Increased font size */
+    color: #626262;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}

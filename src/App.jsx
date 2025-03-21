@@ -9,6 +9,7 @@ import RoomCodePage from "./pages/RoomCodePage";
 import SetBackgroundImage from "./pages/SetBackgroundImage.jsx";
 import TeamsPage from "./pages/TeamsPage.jsx";
 import SettingsPage from "./pages/SettingsPage.jsx";
+import Footer from './components/Footer';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/teams" element={<TeamsPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
             </Routes>
+            <Footer/>
         </Router>
     );
 }
