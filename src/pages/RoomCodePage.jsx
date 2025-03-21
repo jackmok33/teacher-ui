@@ -15,6 +15,7 @@ function RoomCodePage() {
 
     return (
         <div className="room-code-page">
+            <h1>Room Code</h1>
             <div className="room-code-box">
                 <div className="room-code">
                     {roomCode.split("").map((digit, index) => (
