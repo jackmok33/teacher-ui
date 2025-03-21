@@ -60,7 +60,7 @@ function UploadQuizQuestionPage() {
                 <h1>Step 1 - Question Preparation </h1>
                 <img src="https://cdn-icons-png.flaticon.com/512/6394/6394065.png" style={{width:"150px"}}></img>
                 <h2>Upload Your JSON File</h2>
-                <p>Upload a JSON file to start the game setup</p>
+                <p>Upload a JSON file with Questions to setup the game.</p>
 
                 <form onSubmit={handleUpload} className="upload-form">
                     {/* File Upload Section */}
