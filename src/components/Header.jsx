@@ -6,7 +6,7 @@ function Header() {
         <header className="header">
             <div className="logo-container">
                 <img src="/logo.png"  className="logo" />
-                <h1 className="title">Mixed Reality Board Game -Teacher</h1>
+                <h1 className="title">Classroom Explorer -Teacher Dashboard</h1>
             </div>
         </header>
     );

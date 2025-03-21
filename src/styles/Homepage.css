@@ -2,44 +2,55 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: white; /* Set page background to white */
-    color: #333; /* Dark text for contrast */
+    background-color: white;
+    color: #333;
 }
 
-/* Homepage Layout */
+/* Homepage Layout - now acts as the canvas covering the full page */
 .homepage {
-    height: 80vh;
+    min-height: calc(100vh - 60px); /* Adjust 60px to match your header height */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #e9ecef; /* Example canvas background */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    padding-bottom: 50px;
 }
 
-/* Hero Section */
+/* Hero Section - stretched to fill the homepage without max-width constraints */
 .hero {
-    background-color: #f0f0f0; /* Light gray background for the box */
-    padding: 60px; /* Increased padding for more content space */
-    border-radius: 15px; /* Slightly rounder corners */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
-    width: 90%;
-    max-width: 700px; /* Increased max-width for larger screens */
+    background-color: #ffffff;
+    padding: 60px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;    /* Full width within the canvas */
+    margin: 0;
+    flex: 1;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center;
 }
 
 /* Heading and Paragraph */
 .hero h1 {
-    font-size: 2.5rem; /* Larger font size for the header */
-    color: #4caf50; /* Green for the header */
+    font-size: 2.5rem;
+    color: #5e5e5e;
     margin-bottom: 25px;
 }
 
 .hero p {
-    font-size: 1.2rem; /* Slightly larger font size for the paragraph */
+    font-size: 1.2rem;
     margin-bottom: 30px;
-    color: #555; /* Lighter color for paragraph */
+    color: #555;
 }
 
-/* Form Styles */
+/* Form Styles remain the same */
 .name-form {
+    width: 50%;           /* Updated to 50% width */
+    margin: 0 auto;       /* Centers the form horizontally */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -47,19 +58,19 @@ body {
 
 .name-input {
     padding: 12px 18px;
-    border: 1px solid #ccc; /* Light border */
+    border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
     transition: border 0.3s ease;
 }
 
 .name-input:focus {
-    border-color: #4caf50; /* Highlight border on focus */
+    border-color: #4caf50;
     outline: none;
 }
 
 .submit-button {
-    background-color: #4caf50;
+    background-color: #393939;
     color: white;
     border: none;
     border-radius: 8px;
@@ -70,7 +81,7 @@ body {
 }
 
 .submit-button:hover {
-    background-color: #45a049;
+    background-color: #5a5a5a;
     transform: scale(1.05);
 }
 
@@ -82,16 +93,15 @@ body {
     border: 1px solid #ccc;
 }
 
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
-        padding: 30px; /* Smaller padding for mobile devices */
+        padding: 30px;
     }
     .hero h1 {
-        font-size: 2rem; /* Adjust heading size for smaller screens */
+        font-size: 2rem;
     }
     .hero p {
-        font-size: 1rem; /* Adjust paragraph size for smaller screens */
+        font-size: 1rem;
     }
 }

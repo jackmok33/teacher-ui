@@ -105,51 +105,53 @@ function GenerateQuestionPage() {
 
             <form onSubmit={handleGenerate} className="settings-form">
                 {/* Age Group Selection */}
-                <div className="setting-item">
-                    <label htmlFor="age">Age Group</label>
-                    <select
-                        id="age"
-                        value={age}
-                        onChange={(e) => setAge(e.target.value)}
-                        className="setting-dropdown"
-                    >
-                        <option value="7-9">7-9 years</option>
-                        <option value="10-12">10-12 years</option>
-                        <option value="13-15">13-15 years</option>
-                        <option value="16-18">16-18 years</option>
-                    </select>
-                </div>
+                <div className="settings-items">
+                    `<div className="setting-item">
+                        <label htmlFor="age">Age Group</label>
+                        <select
+                            id="age"
+                            value={age}
+                            onChange={(e) => setAge(e.target.value)}
+                            className="setting-dropdown"
+                        >
+                            <option value="7-9">7-9 years</option>
+                            <option value="10-12">10-12 years</option>
+                            <option value="13-15">13-15 years</option>
+                            <option value="16-18">16-18 years</option>
+                        </select>
+                    </div>
 
-                {/* Number of Questions */}
-                <div className="setting-item">
-                    <label htmlFor="questionCount">Number of Questions</label>
-                    <input
-                        type="number"
-                        id="questionCount"
-                        value={questionCount}
-                        onChange={(e) => setQuestionCount(Number(e.target.value))}
-                        min="1"
-                        max="5"
-                        className="setting-input"
-                    />
-                </div>
+                    {/* Number of Questions */}
+                    <div className="setting-item">
+                        <label htmlFor="questionCount">Number of Questions</label>
+                        <input
+                            type="number"
+                            id="questionCount"
+                            value={questionCount}
+                            onChange={(e) => setQuestionCount(Number(e.target.value))}
+                            min="1"
+                            max="5"
+                            className="setting-input"
+                        />
+                    </div>
 
-                {/* Subject Selection */}
-                <div className="setting-item">
-                    <label htmlFor="subject">Subject</label>
-                    <select
-                        id="subject"
-                        value={subject}
-                        onChange={(e) => setSubject(e.target.value)}
-                        className="setting-dropdown"
-                    >
-                        <option value="History">History</option>
-                        <option value="English">English</option>
-                        <option value="French">French</option>
-                        <option value="Spanish">Spanish</option>
-                        <option value="Business">Business</option>
-                        <option value="Economics">Economics</option>
-                    </select>
+                    {/* Subject Selection */}
+                    <div className="setting-item">
+                        <label htmlFor="subject">Subject</label>
+                        <select
+                            id="subject"
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
+                            className="setting-dropdown"
+                        >
+                            <option value="History">History</option>
+                            <option value="English">English</option>
+                            <option value="French">French</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Business">Business</option>
+                            <option value="Economics">Economics</option>
+                        </select>
+                    </div>
                 </div>
 
                 {/* Generate Button */}

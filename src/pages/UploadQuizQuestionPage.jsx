@@ -56,28 +56,30 @@ function UploadQuizQuestionPage() {
 
     return (
         <div className="upload-page">
-            <h1>Upload Your JSON File</h1>
-            <p>Upload a JSON file to start the game setup</p>
+            <div className="upload-container">
+                <h1>Upload Your JSON File</h1>
+                <p>Upload a JSON file to start the game setup</p>
 
-            <form onSubmit={handleUpload} className="upload-form">
-                {/* File Upload Section */}
-                <div className="file-upload-box">
-                    <label className="file-upload-label">
-                        {file ? file.name : "Drag or Browse to select a JSON file"}
-                        <input
-                            type="file"
-                            className="file-input"
-                            onChange={handleFileChange}
-                            accept=".json"
-                            required
-                        />
-                    </label>
-                </div>
+                <form onSubmit={handleUpload} className="upload-form">
+                    {/* File Upload Section */}
+                    <div className="file-upload-box">
+                        <label className="file-upload-label">
+                            {file ? file.name : "Drag or Browse to select a JSON file"}
+                            <input
+                                type="file"
+                                className="file-input"
+                                onChange={handleFileChange}
+                                accept=".json"
+                                required
+                            />
+                        </label>
+                    </div>
 
-                <button type="submit" className="upload-button" disabled={isUploading}>
-                    {isUploading ? "Uploading..." : "Upload File"}
-                </button>
-            </form>
+                    <button type="submit" className="upload-button" disabled={isUploading}>
+                        {isUploading ? "Uploading..." : "Upload File"}
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }
