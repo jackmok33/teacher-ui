@@ -65,7 +65,8 @@ html, body, #root {
 .camera-button {
     padding: 15px 30px;
     font-size: 1.2rem;
-    background-color: #4CAF50;
+    background-color: #393939
+    ;
     color: white;
     border: none;
     border-radius: 8px;
@@ -74,7 +75,9 @@ html, body, #root {
 }
 
 .camera-button:hover {
-    background-color: #45a049;
+    background-color: 
+    #5a5a5a
+    ;
     transform: scale(1.05);
 }
 

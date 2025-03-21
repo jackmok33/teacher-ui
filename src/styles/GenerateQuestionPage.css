@@ -119,7 +119,7 @@ p {
 button.apply-button {
     padding: 15px 25px; /* Larger padding for a more prominent button */
     font-size: 1.2rem; /* Larger font size for the button text */
-    background-color: #4CAF50; /* Green background */
+    background-color: #393939; /* Green background */
     color: white; /* White text color */
     border: none; /* Remove the border */
     border-radius: 8px; /* Rounded corners */
@@ -129,7 +129,7 @@ button.apply-button {
 
 /* Hover effect for the apply button */
 button.apply-button:hover {
-    background-color: #45a049; /* Slightly darker green on hover */
+    background-color:#5a5a5a; /* Slightly darker green on hover */
     transform: scale(1.05); /* Slight enlargement on hover */
 }
 

@@ -68,7 +68,8 @@ p {
 
 .upload-button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #393939
+    ;
     color: white;
     font-size: 1rem;
     border: none;
@@ -78,7 +79,9 @@ p {
 }
 
 .upload-button:hover {
-    background-color: #45a049;
+    background-color: 
+    #5a5a5a
+    ;
 }
 
 .upload-button:disabled {
