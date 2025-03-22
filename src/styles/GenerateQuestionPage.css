@@ -3,15 +3,16 @@
     max-width: 100%; /* Maximum width of the page container */
     margin: 20px auto; /* Center the page horizontally */
     margin-left: 20px;
-    margin-right:20px;
-    padding-bottom: 40px;
+    margin-right: 20px;
     padding: 40px; /* Add padding around the content */
     background-color: #f9f9f9; /* Light gray background */
     border-radius: 15px; /* Rounded corners */
-    height: 90%;
+    min-height: calc(100vh - 200px); /* Adjust for header/footer space */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for a lifted effect */
     justify-content: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Main heading styles */
