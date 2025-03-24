@@ -8,6 +8,7 @@ function SettingsPage() {
     const [teamMode, setTeamMode] = useState("FFA");
     const [numberOfPlayers, setNumberOfPlayers] = useState(2);
     const [quizMode, setQuizMode] = useState("NORMAL");
+    const [boardNumber, setBoardNumber] = useState(1); // New state for map selection
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -22,7 +23,8 @@ function SettingsPage() {
                     timeLimit,
                     teamMode,
                     numberOfPlayers,
-                    quizMode
+                    quizMode,
+                    boardNumber
                 })
             });
 
@@ -98,6 +100,20 @@ function SettingsPage() {
                         <option value="NORMAL">NORMAL</option>
                         <option value="BUZZ">BUZZ</option>
                         <option value="TIME_RUSH">TIME RUSH</option>
+                    </select>
+                </div>
+
+                {/* Map Selection - New field */}
+                <div className="setting-item">
+                    <label htmlFor="boardNumber">Map Selection</label>
+                    <select
+                        id="boardNumber"
+                        value={boardNumber}
+                        onChange={(e) => setBoardNumber(e.target.value)}
+                        className="setting-dropdown"
+                    >
+                        <option value="1">Map 1</option>
+                        <option value="2">Map 2</option>
                     </select>
                 </div>
 
