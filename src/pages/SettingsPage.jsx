@@ -11,6 +11,27 @@ function SettingsPage() {
     const [boardNumber, setBoardNumber] = useState(1); // New state for map selection
     const navigate = useNavigate();
 
+    // Define the maps array
+    const maps = [
+        { 
+            id: 1, 
+            name: "Map 1", 
+            image: "./src/assets/map1.jpeg", 
+            description: "Game time approx. 1hour" 
+        },
+        { 
+            id: 2, 
+            name: "Map 2", 
+            image: "./src/assets/map2.jpeg", 
+            description: "Game time approx. 20mins" 
+        }
+    ];
+
+    // Define the handleMapSelect function
+    const handleMapSelect = (mapId) => {
+        setBoardNumber(mapId);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -47,7 +68,7 @@ function SettingsPage() {
             <form onSubmit={handleSubmit} className="settings-form">
                 {/* Time Limit */}
                 <div className="setting-item">
-                    <label htmlFor="timeLimit">Time Limit (seconds)</label>
+                    <label htmlFor="timeLimit">Quiz Time Limit (seconds)</label>
                     <input
                         type="number"
                         id="timeLimit"
@@ -103,18 +124,24 @@ function SettingsPage() {
                     </select>
                 </div>
 
-                {/* Map Selection - New field */}
-                <div className="setting-item">
-                    <label htmlFor="boardNumber">Map Selection</label>
-                    <select
-                        id="boardNumber"
-                        value={boardNumber}
-                        onChange={(e) => setBoardNumber(e.target.value)}
-                        className="setting-dropdown"
-                    >
-                        <option value="1">Map 1</option>
-                        <option value="2">Map 2</option>
-                    </select>
+                {/* Map Selection Grid */}
+                <div className="setting-item map-selection">
+                    <label>Map Selection</label>
+                    <div className="map-grid">
+                        {maps.map(map => (
+                            <div 
+                                key={map.id} 
+                                className={`map-item ${boardNumber === map.id ? 'selected' : ''}`}
+                                onClick={() => handleMapSelect(map.id)}
+                            >
+                                <img src={map.image} alt={map.name} />
+                                <div className="map-info">
+                                    <h3>{map.name}</h3>
+                                    <p>{map.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 <button type="submit" className="apply-button">Apply Settings</button>
